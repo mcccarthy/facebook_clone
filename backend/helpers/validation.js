@@ -7,3 +7,24 @@ exports.validateEmail = (email) => {
 exports.validateLength = (str, min, max) => {
   return str.length >= min && str.length <= max;
 };
+
+const User = require('../models/User'); // Import User model
+
+exports.validateUsername = async (username) => {
+  let originalUsername = username;
+  let counter = 1;
+
+  while (true) {
+    let user = await User.findOne({ username });
+    if (!user) {
+      return username; // Return the validated username if it's unique
+    } else {
+      username = `${originalUsername}${counter}`; // Append a counter to the original username
+      counter++;
+    }
+  }
+};
+
+
+
+
