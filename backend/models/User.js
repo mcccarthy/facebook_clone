@@ -1,6 +1,7 @@
-const { ObjectId } = require('mongodb');
+
 const mongoose = require('mongoose');
-const { objectId } = mongoose.Schema;
+
+const { ObjectId } = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   first_name: {
@@ -155,4 +156,4 @@ const userSchema = new mongoose.Schema({
   timestamps: true,
 });
 
-module.exports = mongoose.model('User', user.Schema)
+module.exports = mongoose.model('User', userSchema);
